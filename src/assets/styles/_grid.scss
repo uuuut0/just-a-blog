@@ -1,0 +1,166 @@
+$container_max: 1140px;
+$container_mobile_max: 1140px;
+$grid_columns: 12;
+$gutter_width: 24px;
+
+$grid-breakpoints: (
+    '': false,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+);
+$container-max-widths: (
+    '': 320px,
+    sm: 560px,
+    md: 720px,
+    lg: 960px,
+    xl: $container_max
+);
+
+$container-padding-base: (
+    '': 8px,
+    sm: 16px,
+    md: 16px,
+    lg: 32px,
+);
+
+
+$grid-cols-count-list: (
+    '': 6,
+    sm: 4,
+    md: 6,
+    lg: 12,
+    xl: 12
+);
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: calc($gutter_width / 2);
+    padding-right: calc($gutter_width / 2);
+}
+
+.basepadding {
+    padding-top: map-get($map: $container-padding-base , $key: '');
+}
+
+.container-fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-left: calc($gutter_width / -2);
+    margin-right: calc($gutter_width / -2);
+}
+
+.container-no-gutters {
+    padding-left: 0;
+    padding-right: 0;
+
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+
+        >[class*='col-'] {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+    }
+}
+
+.no-gutters {
+    margin-left: 0px;
+    margin-right: 0px;
+
+    >[class*='col-'] {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+%col {
+    position: relative;
+    // background-color: #c7e6ff;
+    padding-left: calc($gutter_width / 2);
+    padding-right: calc($gutter_width / 2);
+}
+
+
+
+
+// mobile-first
+@mixin grid_sys($col_count) {
+
+    @each $key, $value in $grid-breakpoints {
+
+        @if not $value {
+
+            @for $var from 1 through $col_count {
+                .col-#{$var} {
+                    @extend %col;
+                    max-width: 100% * calc($var / $col_count);
+                    flex: 0 0 (100% * calc($var / $col_count));
+                    // max-width: calc($var / $col_count);
+                    // flex: 0 0 calc($var / $col_count);
+
+                }
+            }
+        }
+
+        @else {
+            @media screen and (min-width: $value) {
+                // $col_count: map-get($map: $col_count_list, $key: $key);
+
+                @for $var from 1 through $col_count {
+                    .col-#{$key}-#{$var} {
+                        max-width: (100% * calc($var / $col_count));
+                        flex: 0 0 (100% * calc($var / $col_count));
+
+                        // max-width: percentage($var / $col_count);
+                        // flex: 0 0 percentage($var / $col_count);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+@mixin container_rwd($screen-breakpoints, $container-maxwidths) {
+    @each $key, $value in $screen-breakpoints {
+        @if $value {
+            @media screen and (min-width:$value) {
+                .container {
+                    max-width: map-get($map: $container-maxwidths , $key: $key )
+                }
+            }
+
+        }
+
+    }
+}
+
+@mixin container_paddingbase($screen-breakpoints, $container-paddingbase_list) {
+    @each $key, $value in $screen-breakpoints {
+        @if $value {
+            @media screen and (min-width:$value) {
+
+                .basepadding {
+                    padding-top: map-get($map: $container-paddingbase_list , $key: $key )
+                }
+            }
+
+        }
+
+    }
+}

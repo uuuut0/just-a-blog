@@ -1,0 +1,52 @@
+@use 'grid' as g;
+@use 'toggleshow' as tg;
+
+@import '@/assets/styles/_variables.scss';
+
+@include g.grid_sys(12);
+@include g.container_rwd(g.$grid-breakpoints, g.$container-max-widths );
+@include g.container_paddingbase(g.$grid-breakpoints, g.$container-padding-base);
+@include tg.toggleshow(g.$grid-breakpoints);
+
+* {
+    font-size: 16px;
+}
+
+body {
+    background-color: $bgSubtle;
+    // overflow: hidden;
+    overflow-x: hidden;
+}
+
+.tag-fontsize {
+    font-size: 14px;
+}
+
+.card-fontsize {
+    font-size: 16px;
+}
+
+button,
+a {
+    font-size: 16px;
+}
+
+// .hideScrollbar {
+//     // hide scrollbar:
+//     -ms-overflow-style: none;
+//     /* IE and Edge */
+//     scrollbar-width: none;
+
+//     /* Firefox */
+//     /* Hide scrollbar for Chrome, Safari and Opera */
+//     &::-webkit-scrollbar {
+//         display: none;
+//     }
+// }
+
+// .hideOverflowText {
+//     overflow: hidden;
+//     white-space: nowrap;
+//     text-overflow: ellipsis;
+
+// }

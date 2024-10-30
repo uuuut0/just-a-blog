@@ -1,0 +1,19 @@
+@import '@/assets/styles/reset.css';
+@import './base.css';
+@import '@/assets/styles/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,300..800&display=swap');
+.open-sans-400 {
+    font-family: "Open Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 75;
+    letter-spacing: unset;
+  }
+  /* global style :section-title */
+  h1.section-title.open-sans-400{
+    letter-spacing: 0;
+    font-size: 42px;
+  }
+  

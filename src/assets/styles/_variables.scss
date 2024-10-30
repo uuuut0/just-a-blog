@@ -1,0 +1,183 @@
+@mixin box-shadow($x, $y, $blur, $spread, $color) {
+    -webkit-box-shadow: $x $y $blur $spread $color;
+    -moz-box-shadow: $x $y $blur $spread $color;
+    box-shadow: $x $y $blur $spread $color;
+}
+
+//---- name by brand style 以風格指示命名
+$brandMainColor: #FABC43;
+$brandMainColor-2: #F5C466;
+$brandMainColor--light: #FCF1DD;
+// -
+$brandSecondary: #1F7FD7;
+$brandSecondary-dark: #0B3C69;
+
+// 
+//---- name by semanic 以語義(用途)命名
+$bgSubtle: #f5f5f5;
+$bgSubtle-1: #efefef;
+$bgSubtle-2: #eeecec;
+$bgSubtle-blue: #D7E3EF;
+$bgGray: #474747;
+
+// -
+$outline-dark--sec: #4882B8;
+$outline-light--main: #FFCA7B;
+$outline-dark--grey: #d9d9d9;
+$outline-dark--black: #232323;
+$outline-dark--black-2: rgb(58, 58, 58);
+// 
+//---- name by color pallette 以色彩命名
+$softBlack: #464646;
+$softBlack--text: #6e6e6e;
+$softWhite: #EDEDED;
+$softWhite-2: #f9f9f9;
+$softGrey--bg: #f4f4f4;
+$midGrey--bg: #c3c2c2;
+$bluetint--bg: #c9ddf1;
+$bluetintGrey--bg: #7aaeed;
+
+//--- gradient preset
+$midGrey--bg-grad: linear-gradient(165deg, rgba(195, 194, 194, 1) 0%, rgba(176, 176, 176, 1) 31%, rgba(203, 199, 199, 1) 90%, rgba(212, 211, 211, 1) 100%);
+$darkGrey--bg-grad: linear-gradient(165deg, rgba(117, 107, 107, 1) 0%, rgba(47, 44, 44, 1) 32%, rgba(28, 24, 24, 1) 41%, rgba(40, 34, 34, 1) 48%, rgba(91, 87, 87, 1) 98%);
+$orange--bg-grad: linear-gradient(165deg, rgba(237, 184, 34, 1) 0%, rgba(232, 179, 78, 1) 31%, rgba(221, 160, 16, 1) 95%);
+$lightBlue--bg-grad: linear-gradient(165deg, rgba(46, 155, 226, 1) 0%, rgba(59, 162, 224, 1) 27%, rgba(84, 180, 221, 1) 42%, rgba(80, 177, 221, 1) 66%, rgba(31, 136, 225, 1) 100%);
+
+//--- box-shadow preset
+.boxshadow-1 {
+    @include box-shadow(0px, 2px, 4px, 1px, rgba(0, 0, 0, 0.2));
+}
+
+.boxshadow-2 {
+    @include box-shadow(2px, 1px, 6px, 1px, rgba(33, 33, 33, 0.2));
+}
+
+.boxshadow-3 {
+    @include box-shadow(0px, -1px, 8px, 0px, rgba(33, 33, 33, 0.2));
+}
+
+//--- common-util
+.hideScrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    ;
+}
+
+.hideOverflowText {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+.disableSelect {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+
+// screen breakpoints
+$screen-breakpoints: (
+    '': false,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+);
+
+
+
+//fontsize in diffrent screensize
+* {
+    font-size: 14px;
+    letter-spacing: 10%;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+}
+
+p {
+    font-size: 16px;
+}
+
+span {
+    font-size: 15px;
+}
+
+a {
+    font-size: 15px;
+    letter-spacing: 14%;
+}
+
+@media screen and (min-width: map-get($screen-breakpoints, lg)) {
+    * {
+        font-size: 14px;
+        letter-spacing: 10%;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    h3 {
+        font-size: 24px;
+    }
+
+    h4 {
+        font-size: 20px;
+    }
+
+    h5 {
+        font-size: 18px;
+    }
+
+    h6 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    span,
+    li {
+        font-size: 16px;
+    }
+
+
+    a {
+        font-size: 16px;
+        letter-spacing: 20%;
+    }
+}

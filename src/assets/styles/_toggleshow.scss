@@ -1,0 +1,49 @@
+@mixin toggleshow($grid-breakpoints) {
+    .mobile-only {
+        display: unset;
+    }
+
+    .mobile-hidden {
+        display: none;
+    }
+
+    .tablet-hidden {
+        display: unset;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .desktop-hidden {
+        display: unset;
+    }
+
+
+    @media screen and (min-width: #{map-get($grid-breakpoints,sm)}) {
+        .mobile-hidden {
+            display: unset;
+        }
+    }
+
+    @media screen and (min-width: #{map-get($grid-breakpoints,md)}) {
+        .tablet-hidden {
+            display: hidden;
+        }
+    }
+
+
+    @media screen and (min-width: #{map-get($grid-breakpoints,lg)}) {
+        .desktop-only {
+            display: unset;
+        }
+
+        .desktop-hidden {
+            display: none;
+        }
+    }
+
+
+    @media screen and (min-width: #{map-get($grid-breakpoints,xl)}) {}
+
+}
