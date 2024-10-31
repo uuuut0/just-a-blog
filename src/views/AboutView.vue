@@ -1,5 +1,7 @@
+<script setup>
+import MaintenanceSign from '@/components/usage/MaintenanceSign.vue';
+</script>
 <template>
-    <div>
-        <h2>about view</h2>
-    </div>
+    <MaintenanceSign />
+
 </template>

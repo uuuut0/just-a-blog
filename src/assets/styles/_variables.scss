@@ -24,6 +24,7 @@ $bgGray: #474747;
 $outline-dark--sec: #4882B8;
 $outline-light--main: #FFCA7B;
 $outline-dark--grey: #d9d9d9;
+$outline-dark--grey_active: rgb(173, 172, 172);
 $outline-dark--black: #232323;
 $outline-dark--black-2: rgb(58, 58, 58);
 // 
@@ -42,6 +43,10 @@ $midGrey--bg-grad: linear-gradient(165deg, rgba(195, 194, 194, 1) 0%, rgba(176, 
 $darkGrey--bg-grad: linear-gradient(165deg, rgba(117, 107, 107, 1) 0%, rgba(47, 44, 44, 1) 32%, rgba(28, 24, 24, 1) 41%, rgba(40, 34, 34, 1) 48%, rgba(91, 87, 87, 1) 98%);
 $orange--bg-grad: linear-gradient(165deg, rgba(237, 184, 34, 1) 0%, rgba(232, 179, 78, 1) 31%, rgba(221, 160, 16, 1) 95%);
 $lightBlue--bg-grad: linear-gradient(165deg, rgba(46, 155, 226, 1) 0%, rgba(59, 162, 224, 1) 27%, rgba(84, 180, 221, 1) 42%, rgba(80, 177, 221, 1) 66%, rgba(31, 136, 225, 1) 100%);
+// buttons
+$btn_mainbrand: #ffc14a;
+$btn-grey: #E1EAF0;
+$btn-grey_hover: #c5c5c5;
 
 //--- box-shadow preset
 .boxshadow-1 {

@@ -1,3 +1,6 @@
+<script setup>
+import MaintenanceSign from '@/components/usage/MaintenanceSign.vue';
+</script>
 <template>
-    <h5>this is blogpost</h5>
+    <MaintenanceSign />
 </template>

@@ -16,6 +16,7 @@ const carouselClick = (action) => {
 
     const carousel = document.querySelector('.section-event__carousell')
     const scrollStep = widthcard.value * 1.1
+    console.log('w.value is:', widthcard.value)
     const maxScroll = carousel.scrollWidth - carousel.clientWidth
     const currentScroll = carousel.scrollLeft;
     // holdtime is for multiclick problem
@@ -41,8 +42,8 @@ const carouselClick = (action) => {
 }
 
 onMounted(() => {
-    carouselHandle()
-})
+    window.addEventListener('load', carouselHandle);
+});
 window.addEventListener('resize', carouselHandle)
 
 
@@ -173,8 +174,15 @@ window.addEventListener('resize', carouselHandle)
                     display: inline-block;
                     height: 100%;
                     aspect-ratio: 1;
+                    cursor: pointer;
 
                     //box-sizing: content-box;
+                    &:hover {
+
+                        svg {
+                            background-color: $outline-dark--grey_active;
+                        }
+                    }
 
                     svg {
                         background-color: $outline-dark--grey;
@@ -183,7 +191,7 @@ window.addEventListener('resize', carouselHandle)
                         width: 100%;
                         height: 100%;
                         padding: 16%;
-
+                        transition: all;
                     }
 
                 }

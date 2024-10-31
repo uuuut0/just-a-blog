@@ -1,23 +1,23 @@
 <template>
-    <div class="base-header__spaceholder"></div>
+    <!-- <div class="base-header__spaceholder"></div> -->
     <header class="base-header">
         <div class="header-wrap">
-            <div class="header-wrap__logoimg mobile-hidden">
-                <img src=" @/assets/images/utl-logo.jpg " alt="">
-            </div>
+
             <div class="header-wrap__bgshade">
                 <img src="@/assets/images/bgdeco/header_navshade.svg
                 " alt="">
+            </div>
+            <div class="header-wrap__logoimg mobile-hidden" @click="goToHomepage">
+                <img src=" /utlblogs-logo-main.svg " alt="">
             </div>
             <div class="header-wrap__menuicon desktop-hidden " @click="sidemenu_toggle">
                 <span class="material-symbols-sharp">menu</span>
             </div>
             <div class="header-wrap__sidemenu-wrap desktop-hidden hidden">
-                <div class="sidemenu-wrap__logoimg mobile-only">side-logo-only-mobile</div>
+                <div class="sidemenu-wrap__logoimg" @click="goToHomepage">
+                    <img src=" /utlblogs-logo-main_white.svg " alt="">
+                </div>
                 <div class="sidemenu-wrap__linklist">
-                    <div class="sidemenu-link">
-                        <RouterLink to="/">HOME</RouterLink>
-                    </div>
                     <div class="sidemenu-link">
                         <RouterLink to="bloghub">文章觀點</RouterLink>
                     </div>
@@ -36,9 +36,6 @@
         <div class="header-nav-wrap desktop-only">
             <div class="nav-wrap-linklist">
                 <div class="nav-link">
-                    <RouterLink to="/">HOME</RouterLink>
-                </div>
-                <div class="nav-link">
                     <RouterLink to="bloghub">文章觀點</RouterLink>
                 </div>
                 <div class="nav-link">
@@ -56,9 +53,9 @@
 </template>
 <script setup>
 import { ref, onMounted } from 'vue';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRouter, useRoute } from 'vue-router';
 const sidemenu_isActive = ref(false);
-
+const router = useRouter()
 const sidemenu_toggle = () => {
     const sidenav = document.querySelector('.header-wrap__sidemenu-wrap')
     if (sidemenu_isActive.value) {
@@ -78,6 +75,9 @@ const sidemenu_toggle = () => {
 
         sidemenu_isActive.value = true
     }
+}
+const goToHomepage = () => {
+    router.push('/')
 }
 
 onMounted(() => {
@@ -115,9 +115,9 @@ $header-height-desktop: 54px;
 $header-height-mobile: 42px;
 
 .base-header__spaceholder {
-    //background-color: #922727;
     height: $header-height-mobile;
     transition: .4s ease-in-out;
+    display: none;
 
     @media screen and (min-width: map-get($screen-breakpoints, lg)) {
         height: $header-height-desktop ;
@@ -127,15 +127,12 @@ $header-height-mobile: 42px;
 }
 
 .base-header {
+
     transition: all .2s;
-    position: fixed;
+    position: sticky;
     width: 100%;
     top: 0;
     z-index: 5;
-    //transition: all 2s ease;
-
-
-
 
     * {
         transition: inherit;
@@ -152,9 +149,17 @@ $header-height-mobile: 42px;
 
 
 
+
         .header-wrap__logoimg {
             width: 120px;
             height: 36px;
+            margin: auto;
+            z-index: 1;
+            cursor: pointer;
+
+            &:hover {
+                opacity: 60%;
+            }
 
             >img {
                 width: 100%;
@@ -170,7 +175,6 @@ $header-height-mobile: 42px;
             right: 0;
             height: $header-height-mobile;
             width: 60%;
-            z-index: 0;
             overflow: hidden;
 
             img {
@@ -214,8 +218,7 @@ $header-height-mobile: 42px;
             transform: translateX(100%) translateY(100%);
             height: 100vh;
             min-height: 500px;
-            padding-right: 20px;
-            padding-left: 20px;
+
             background-color: $bgGray;
 
             transition: all .2s;
@@ -228,6 +231,8 @@ $header-height-mobile: 42px;
             &.hidden {
                 display: none;
             }
+
+
 
             .sidemenu-wrap__linklist {
                 padding: 10px 0;
@@ -249,7 +254,7 @@ $header-height-mobile: 42px;
                         width: 100%;
                         text-align: center;
                         font-size: 18px;
-
+                        cursor: pointer;
                     }
 
                     &:hover {
@@ -257,10 +262,38 @@ $header-height-mobile: 42px;
                     }
                 }
             }
+
+            .sidemenu-wrap__logoimg {
+                background: #2f2f2fd8;
+                height: 40px;
+                width: 100%;
+                overflow: hidden;
+                margin-left: auto;
+                margin-right: auto;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                box-sizing: content-box;
+                transition: all .2s;
+                cursor: pointer;
+
+
+                &:hover {
+                    background: #fdfdfd78;
+                }
+
+                >img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
     }
 
     .header-nav-wrap {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(100%);
+        width: 100%;
 
         .nav-wrap-linklist {
             min-height: 40px;
@@ -271,19 +304,19 @@ $header-height-mobile: 42px;
             align-items: center;
 
             .nav-link {
-                padding: 5px 8px;
+                padding: 2px 8px;
                 margin-right: 5px;
-                background-color: #a7a4a4;
+                background-color: $btn-grey;
 
                 &:last-child {
                     margin-right: 0;
                 }
 
                 &:hover {
-                    a {
-                        background-color: #fff;
 
-                    }
+                    background-color: $btn-grey_hover;
+
+
                 }
             }
 

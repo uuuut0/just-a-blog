@@ -1,6 +1,6 @@
+<script setup>
+import MaintenanceSign from '@/components/usage/MaintenanceSign.vue';
+</script>
 <template>
-    <h5>hi this is About Us</h5>
-    <h5>hi this is About Us</h5>
-    <h5>hi this is About Us</h5>
-    <h5>hi this is About Us</h5>
+    <MaintenanceSign />
 </template>

@@ -1,12 +1,18 @@
-<script setup lang="ts">
-import { RouterLink } from 'vue-router';
+<script setup>
+import { RouterLink, useRouter } from 'vue-router';
+const router = useRouter()
+const goToHomepage = () => {
+    router.push('/')
+}
 </script>
 
 <template>
     <div class="base-footer">
         <div class="footer__main">
             <div class="container">
-                <div class="footer__logo-wrap">utlblog</div>
+                <div class="footer__logo-wrap" @click="goToHomepage">
+                    <img src=" /utlblogs-logo-main_white.svg " alt="">
+                </div>
                 <div class="footer__link-list">
                     <ul>
                         <li>
@@ -62,10 +68,21 @@ $footer-padding: 20px;
         background-color: $brandSecondary-dark;
 
         .footer__logo-wrap {
-            //padding: 0 $footer-padding;
             width: 120px;
             aspect-ratio: 7/4;
-            background-color: #e0bebe;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all .5s;
+
+            &:hover {
+                background: #cacaca3f;
+            }
+
+            >img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
         }
 
         .footer__link-list {
@@ -75,8 +92,10 @@ $footer-padding: 20px;
                 >li {
                     //background-color: #fff;
                     width: fit-content;
-                    padding-bottom: 12px;
+                    margin-bottom: 12px;
+
                     //border: 1px solid #000;
+
 
                     >a {
                         color: $softWhite;

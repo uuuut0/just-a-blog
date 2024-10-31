@@ -51,17 +51,17 @@ const getArticlesApi = async (url) => {
 <template>
   <div class="recommend-bloglist desktop-only" :class="{ active: show_recommend, sticky: fixed_recommend }">
     <div class="bloglist_header">
-      check this!!!{{ scroll_dist }}
+      check this!!!
     </div>
     <div class="bloglist_list">
-      {{ show_recommend }}
+      height{{ scroll_dist }}
     </div>
   </div>
   <div class="container-fluid section-headbanner">
     <div class="banner-group ">
       <div class="banner-group__txtwrap">
         <div class="txtwrap__title">
-          <h1>小李的料理中心 <span> by UTL</span>
+          <h1>UTLblog <span> by UTL</span>
           </h1>
         </div>
         <div class="txtwrap__divider"></div>
@@ -96,12 +96,12 @@ const getArticlesApi = async (url) => {
   <!-- startpos class is for side-hover to scrollposition  -->
   <div class="container startpos container-no-gutters section-promo">
     <div class="row promo-row mobile-hidden">
-      <div class="col-10">
+      <div class="col-12 col-lg-10">
         <div class="promo-banner"></div>
       </div>
     </div>
     <div class="row subscribe-row mobile-hidden">
-      <div class="col-10">
+      <div class="col-12 col-lg-10">
         <div class="subscribe-banner">
           <h2 class="subscribe-banner__title">
             Welcome To Blog
@@ -110,7 +110,7 @@ const getArticlesApi = async (url) => {
             想隨時接收文章更新，訂閱電子報，不錯過任何一篇文章！
           </p>
           <div class="subscribe-banner__button">
-            <p>訂閱</p>
+            <h5>訂閱</h5>
             <p>Subscribe</p>
           </div>
         </div>
@@ -133,33 +133,6 @@ const getArticlesApi = async (url) => {
     </div>
   </div>
 
-
-
-  <!-- <div class="container-fluid section-event">
-    <div class="section-event__side">
-      <div class="side__wrap">
-
-        <div class="section-event__side__title">
-          <h3>最新活動</h3>
-          <h3>關注焦點</h3>
-        </div>
-        <div class="section-event__side__arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="48px" fill="#e8eaed">
-            <path d="m304-82-56-57 343-343-343-343 56-57 400 400L304-82Z" />
-          </svg>
-        </div>
-      </div>
-    </div>
-    <div class="section-event__carousell">
-      <div class="carousell__wrap">
-
-        <div class="holder-eventcard" v-for="n in 5">
-          <EventCard></EventCard>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
   <HomeSectionEvent />
 </template>
 <style lang="scss" scoped>
@@ -180,11 +153,19 @@ const getArticlesApi = async (url) => {
     .banner-group__txtwrap {
       position: absolute;
       bottom: 20px;
-      padding: 5px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-right: 10px;
+      padding-left: 10px;
       background-color: #eac74a;
+      background-image: url('/home_banner__txt-backdrop.jpg');
+      background-size: cover;
 
       @media screen and (min-width: map-get($screen-breakpoints, md)) {
-        padding: 20px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-right: 20%;
+        padding-left: 20px;
         bottom: 40px;
       }
 
@@ -199,7 +180,7 @@ const getArticlesApi = async (url) => {
       opacity: 100%;
       height: 400px;
       margin: 0 auto;
-      background-color: #34a08f;
+      background-color: $softBlack;
 
       img {
         width: 100%;
@@ -279,14 +260,14 @@ const getArticlesApi = async (url) => {
     //position: relative;
     z-index: 2;
 
-    .col-10 {
+    >div {
       position: relative;
       z-index: inherit;
 
 
       .promo-banner {
         aspect-ratio: 4/1;
-        background: $orange--bg-grad;
+        background: #878585;
       }
     }
   }
@@ -297,9 +278,10 @@ const getArticlesApi = async (url) => {
       display: grid;
       grid-template-columns: 10fr 2fr;
       grid-template-rows: 1fr 1fr;
+      column-gap: 10px;
       align-items: center;
       position: relative;
-      padding: 10px 0;
+      padding: 10px 12px;
       padding-left: 24px;
       z-index: 1;
 
@@ -326,11 +308,16 @@ const getArticlesApi = async (url) => {
         grid-row: 1/3;
         height: fit-content;
 
-        border: 1px solid #000;
-        background-color: #bf8c14;
+        background-color: $btn_mainbrand;
+        border-radius: 6px;
+        padding: 4px;
 
         * {
           text-align: center;
+        }
+
+        >h5 {
+          font-size: 24px;
         }
       }
     }
