@@ -41,7 +41,7 @@ const goToHomepage = () => {
         <div class="footer__statement">
             <div class="container">
                 <a href="#">網頁內容資料使用聲明</a>
-                <p>Developed and desgined by utinglin. <br> This is a web development skill demostraion project</p>
+                <p>Developed and desgined by YT Lin. <br> This is a web development skill demostraion project</p>
             </div>
         </div>
 
